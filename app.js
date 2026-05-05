@@ -1,3 +1,14 @@
+// app.js
+
+// Регистрация сервис-воркера
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('Service Worker зарегистрирован:', reg.scope))
+      .catch(err => console.warn('Ошибка регистрации Service Worker:', err));
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('arrayForm');
   const inputsContainer = document.getElementById('inputs');
@@ -14,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadArrays = () => {
     const arrays = JSON.parse(localStorage.getItem('numberArrays')) || [];
     arraysList.innerHTML = '';
+    if (arrays.length === 0) {
+      arraysList.innerHTML = '<p>Массивов пока нет.</p>';
+      return;
+    }
     arrays.forEach((arr, index) => {
       const div = document.createElement('div');
       div.className = 'array-item';
