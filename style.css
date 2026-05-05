@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+#inputs input { margin: 5px; }
+#arraysList { margin-top: 20px; }
+.array-item { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
